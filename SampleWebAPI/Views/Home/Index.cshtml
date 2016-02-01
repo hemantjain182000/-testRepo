@@ -1,0 +1,98 @@
+﻿<script src="~/Scripts/angular.min.js"></script>
+<script src="~/JS/App.js"></script>
+<script src="~/JS/PartController.js"></script>
+
+
+<body ng-app="myApp" data-ng-controller="PartController">
+    @*<div ng-view></div>*@
+    @*<div ng-controller="PartController">
+            <table>
+                <tr ng-repeat="part in parts">
+                    <td>{{part.PartDescription}}</td>
+                    <td>{{part.UOM}}</td>
+                    <td>{{part.Location}}</td>
+                </tr>
+            </table>
+        </div>*@
+    <h1>Part Information</h1>
+    <form name="myForm">
+        <table>
+            <tr>
+                <td>
+                    ID
+                </td>
+                <td>
+                    PartDescription
+                </td>
+                <td>
+                    UOM
+                </td>
+                <td>
+                    Location
+                </td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr data-ng-repeat="part in Parts">
+                <td>
+                    {{part.PartId}}
+                </td>
+                <td>
+                    {{part.PartDescription}}
+                </td>
+                <td>
+                    {{part.UOM}}
+                </td>
+                <td>
+                    {{part.Location}}
+                </td>
+                <td>
+                    <input type="submit" id="Edit" value="Edit" data-ng-click="getSingleData(part)" />
+                </td>
+                <td>
+                    <input type="submit" id="Delete" value="Delete" data-ng-click="deletePart(part)" />
+                </td>
+            </tr>
+            <tr>
+                    <td>
+                        Part ID
+                    </td>
+                    <td>
+                        <input type="text" disabled data-ng-model="part.PartId" /> 
+                    </td>
+                </tr>
+            <tr>
+                <td>
+                    PartDescription
+                </td>
+                <td>
+                    <input type="text" data-ng-model="part.PartDescription" required />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    UOM
+                </td>
+                <td>
+                    <input type="text" data-ng-model="part.UOM" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Location
+                </td>
+                <td>
+                    <input type="text" data-ng-model="part.Location" />
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input type="submit" value="Save" data-ng-click="add(part)" data-ng-disabled="myForm.part.PartDescription.$dirty && myForm.part.UOM.$invalid" />
+                    <input type="submit" value="Update" data-ng-click="save(part)" />
+                    <input type="reset" value="Clear" />
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
